@@ -2483,3 +2483,2461 @@ Processing by ChirpsController#index as HTML
 Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 1.1ms)
 
 
+Started POST "/upvote/17" for ::1 at 2021-03-02 16:05:05 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"elbFthIFOHR0C7LUNmVAZ39N8crVu+J7wU3v7rJVpGB/qOnIghMSAoAMGd4oD+oxP9O9SWdx8UFMNSYMVscjpw==", "chirp_id"=>"17"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.6ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 17], ["ip", "::1"], ["created_at", "2021-03-03 00:05:05.107530"], ["updated_at", "2021-03-03 00:05:05.107530"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 8], ["chirp_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:05 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (15.9ms)
+Completed 200 OK in 37ms (Views: 34.0ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/upvote/15" for ::1 at 2021-03-02 16:05:10 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"1+jymJb04QrwOKwDTmnValHhJ9nMztjjfcRinjC+wuTSFt7mBuLLfAQ/BwlQA388EX9rWn4Ey9nwvKt81CxFIw==", "chirp_id"=>"15"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (7.2ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:10 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (21.5ms)
+Completed 200 OK in 39ms (Views: 35.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:13 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (24.3ms)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:13 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (10.7ms)
+Completed 200 OK in 29ms (Views: 26.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:14 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (16.5ms)
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:14 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (12.4ms)
+Completed 200 OK in 31ms (Views: 27.1ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/upvote/14" for ::1 at 2021-03-02 16:05:16 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"YVNtNtV0NWbkAAgG7Gz48y9S/6H920NBRNJ4cGs+qLhkrUFIRWIfEBAHowzyBlKlb8yzIk8RUHvJqrGSj6wvfw==", "chirp_id"=>"14"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.5ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:05:16 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (30.1ms)
+Completed 200 OK in 49ms (Views: 45.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/chirps/new" for ::1 at 2021-03-02 16:05:58 -0800
+Processing by ChirpsController#new as HTML
+  Rendering chirps/new.html.haml within layouts/application
+  Rendered chirps/new.html.haml within layouts/application (4.4ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chirps" for ::1 at 2021-03-02 16:06:01 -0800
+Processing by ChirpsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ygeAHP9VPwqp1HiZeGxVFStj6YiXfB9ECNIq80Xiw2hc3/mP9sLZKivdBiZ9GCXENwcRM5aGCqdVH0zRXpwvoA==", "chirp"=>{"message"=>"segasdgfasfd"}, "commit"=>"Create New Chrip"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[36mChirp Create (0.5ms)[0m  [1m[32mINSERT INTO "chirps" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "segasdgfasfd"], ["created_at", "2021-03-03 00:06:01.185411"], ["updated_at", "2021-03-03 00:06:01.185411"]]
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+Redirected to http://localhost:3000/
+Completed 200 OK in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:06:01 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (16.2ms)
+Completed 200 OK in 35ms (Views: 31.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:11:41 -0800
+Processing by ChirpsController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/chirps_controller.rb:5:in `sort_by'
+app/controllers/chirps_controller.rb:5:in `index'
+Started GET "/" for ::1 at 2021-03-02 16:12:20 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.6ms)
+
+
+  
+ZeroDivisionError (divided by 0):
+  
+app/models/chirp.rb:16:in `/'
+app/models/chirp.rb:16:in `score'
+app/controllers/chirps_controller.rb:5:in `block in index'
+app/controllers/chirps_controller.rb:5:in `sort_by'
+app/controllers/chirps_controller.rb:5:in `index'
+Started GET "/" for ::1 at 2021-03-02 16:12:36 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (17.6ms)
+Completed 200 OK in 56ms (Views: 36.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/upvote/15" for ::1 at 2021-03-02 16:12:40 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"H+8uXhFsQXdJr7q0FuSTlKWLs86Ewnh+NmaWZvrs3gMaEQIggXprAb2oEb4IjjnC5RX/TTYIa0S7Hl+EHn5ZxA==", "chirp_id"=>"15"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.6ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 15], ["ip", "::1"], ["created_at", "2021-03-03 00:12:40.780418"], ["updated_at", "2021-03-03 00:12:40.780418"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 9], ["chirp_id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:12:40 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (27.1ms)
+Completed 200 OK in 47ms (Views: 40.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:12:44 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (13.6ms)
+Completed 200 OK in 37ms (Views: 30.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/upvote/14" for ::1 at 2021-03-02 16:12:48 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"2oAG4FYRGOSY39s5f9I44JvgktVSfpJlENcxXs6fCbTffiqexgcykmzYcDNhuJK2237eVuC0gV+dr/i8Kg2Ocw==", "chirp_id"=>"14"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 14], ["ip", "::1"], ["created_at", "2021-03-03 00:12:48.195871"], ["updated_at", "2021-03-03 00:12:48.195871"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 10], ["chirp_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:12:48 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (10.0ms)
+Completed 200 OK in 37ms (Views: 28.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:13:21 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (22.6ms)
+Completed 200 OK in 55ms (Views: 36.9ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/upvote/17" for ::1 at 2021-03-02 16:13:26 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"sI+YMl7BGMWHzXst/3fFHbbv6qxz5INnCVCFBNiAyVu1cbRMztcys3PK0CfhHW9L9nGmL8EukF2EKEzmPBJOnA==", "chirp_id"=>"17"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.7ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:13:26 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (10.1ms)
+Completed 200 OK in 36ms (Views: 26.3ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/upvote/17" for ::1 at 2021-03-02 16:13:37 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"CkU/oSZsHbc+Nnn0Y2LHkJAK8r8YSJZOC/sxuCYY+WEPuxPftno3wcox0v59CG3G0JS+PKqChXSGg/hawop+pg==", "chirp_id"=>"17"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 17], ["ip", "::1"], ["created_at", "2021-03-03 00:13:37.999243"], ["updated_at", "2021-03-03 00:13:37.999243"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 11], ["chirp_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:13:38 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (11.3ms)
+Completed 200 OK in 37ms (Views: 27.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/upvote/18" for ::1 at 2021-03-02 16:13:45 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"9Pu+jXOpfGdoBFRyThZXk04kQCr5l4HFUHGBifeEfdHxBZLz479WEZwD/3hQfP3FDroMqUtdkv/dCUhrExb6Fg==", "chirp_id"=>"18"}
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 18], ["ip", "::1"], ["created_at", "2021-03-03 00:13:45.434799"], ["updated_at", "2021-03-03 00:13:45.434799"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 12], ["chirp_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:13:45 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (24.2ms)
+Completed 200 OK in 48ms (Views: 38.8ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/upvote/17" for ::1 at 2021-03-02 16:13:49 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"MYEmHHKUVI/FNR+NOTJsCq6jsCuhlWSkNuBV2aBtHCs0fwpi4oJ++TEytIcnWMZc7j38qBNfd567mJw7RP+b7A==", "chirp_id"=>"17"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.5ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:13:49 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (11.4ms)
+Completed 200 OK in 34ms (Views: 27.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/chirps/new" for ::1 at 2021-03-02 16:14:05 -0800
+Processing by ChirpsController#new as HTML
+  Rendering chirps/new.html.haml within layouts/application
+  Rendered chirps/new.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chirps" for ::1 at 2021-03-02 16:14:10 -0800
+Processing by ChirpsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aMvve6YFz8TEo4Mi4tlsE/BhGUGoeCIGXOrLrBbQuo/+E5bor5Ip5Eaq/Z3nrRzC7AXh+qmCN+UBJ62ODa5WRw==", "chirp"=>{"message"=>"NEW SHINY"}, "commit"=>"Create New Chrip"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[36mChirp Create (0.4ms)[0m  [1m[32mINSERT INTO "chirps" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "NEW SHINY"], ["created_at", "2021-03-03 00:14:10.905952"], ["updated_at", "2021-03-03 00:14:10.905952"]]
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+Redirected to http://localhost:3000/
+Completed 200 OK in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:11 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (15.7ms)
+Completed 200 OK in 37ms (Views: 28.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/chirps/new" for ::1 at 2021-03-02 16:14:12 -0800
+Processing by ChirpsController#new as HTML
+  Rendering chirps/new.html.haml within layouts/application
+  Rendered chirps/new.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chirps" for ::1 at 2021-03-02 16:14:14 -0800
+Processing by ChirpsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F/hhI0qeVhV4dfEbkqjd9yyjZr0rIUBb17Wo3sB+ACGBIBiwQwmwNfp8j6SX3K0mMMeeBirbVbiKeM782wDs6Q==", "chirp"=>{"message"=>"NEW 2"}, "commit"=>"Create New Chrip"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[36mChirp Create (0.4ms)[0m  [1m[32mINSERT INTO "chirps" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "NEW 2"], ["created_at", "2021-03-03 00:14:14.721959"], ["updated_at", "2021-03-03 00:14:14.721959"]]
+  ↳ app/controllers/chirps_controller.rb:15
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/chirps_controller.rb:15
+Redirected to http://localhost:3000/
+Completed 200 OK in 4ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:14 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (14.4ms)
+Completed 200 OK in 37ms (Views: 29.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/upvote/19" for ::1 at 2021-03-02 16:14:17 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"zB7e/OVXgss3wY3MMbEzeUaO+aG40NoMFm6jlwO8r6z2gBwFyQNZtnmmIs+WORebnlxVO34VlPuosKJCAzh5WQ==", "chirp_id"=>"19"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.3ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 19], ["ip", "::1"], ["created_at", "2021-03-03 00:14:17.291135"], ["updated_at", "2021-03-03 00:14:17.291135"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 13], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:17 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 48ms (Views: 37.6ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/upvote/19" for ::1 at 2021-03-02 16:14:19 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"4RI0TlVUztrJumctXUePiJKUgo2/ocfuQoSsb6b9pr/k7BgwxULkrD29zCdDLSXe0grODg1r1NTP/GWNQm8heA==", "chirp_id"=>"19"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.5ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:19 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (23.6ms)
+Completed 200 OK in 46ms (Views: 37.9ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/upvote/18" for ::1 at 2021-03-02 16:14:20 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"lF0rGiQWp/EBH0r1GIF8H0nBPtXOTaTDEBdJqbR+pCuRowdktACNh/UY4f8G69ZJCV9yVnyHt/mdb4BLUOwj7A==", "chirp_id"=>"18"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.6ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:20 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (21.7ms)
+Completed 200 OK in 45ms (Views: 36.5ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/upvote/18" for ::1 at 2021-03-02 16:14:24 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"d2UcgFgMboNnijsY3WoWUNOKfnbTKWyMKFkJqEIxBUlymzD+yBpE9ZONkBLDALwGkxQy9WHjf7alIcBKpqOCjg==", "chirp_id"=>"18"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.5ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 18], ["ip", "::1"], ["created_at", "2021-03-03 00:14:24.201295"], ["updated_at", "2021-03-03 00:14:24.201295"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 14], ["chirp_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:24 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 45ms (Views: 29.6ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/upvote/19" for ::1 at 2021-03-02 16:14:30 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"0UIymt4CNCDtasyXgzUwqj3BekEA9UHAPmzKfRvT2/nUvB7kThQeVhltZ52dX5r8fV82wrI/UvqzFAOf/0FcPg==", "chirp_id"=>"19"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 19], ["ip", "::1"], ["created_at", "2021-03-03 00:14:30.301630"], ["updated_at", "2021-03-03 00:14:30.301630"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 15], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:14:30 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (13.9ms)
+Completed 200 OK in 41ms (Views: 29.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:15:21 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (185.9ms)
+Completed 500 Internal Server Error in 206ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `chrip' for #<#<Class:0x00007fdce17cd0d8>:0x00007fdce8226f10>
+Did you mean?  chirp):
+    17:           = button_to 'Remove Upvote', remove_upvote_path(chirp.id), method: :delete
+    18:         - else
+    19:           = button_to 'Upvote', upvote_path(chirp.id)
+    20:       %td= chrip.score
+    21: 
+    22: = link_to 'New Chirp', new_chirp_path
+  
+app/views/chirps/index.html.haml:20:in `block in _app_views_chirps_index_html_haml__4562966274389373402_74720'
+app/views/chirps/index.html.haml:10:in `each'
+app/views/chirps/index.html.haml:10:in `_app_views_chirps_index_html_haml__4562966274389373402_74720'
+Started GET "/" for ::1 at 2021-03-02 16:15:26 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (19.7ms)
+Completed 200 OK in 49ms (Views: 37.2ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/upvote/20" for ::1 at 2021-03-02 16:15:34 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"IhH3k3J6qc/XcPEncAzAUos2gHeU7dWVb7Tjhrau2A0n79vt4myDuSN3Wi1uZmoEy6jM9CYnxq/izCpkUjxfyg==", "chirp_id"=>"20"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 20], ["ip", "::1"], ["created_at", "2021-03-03 00:15:34.964925"], ["updated_at", "2021-03-03 00:15:34.964925"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 16], ["chirp_id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:15:34 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (34.1ms)
+Completed 200 OK in 64ms (Views: 52.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:15:41 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (27.8ms)
+Completed 200 OK in 75ms (Views: 63.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:15:42 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  Rendered chirps/index.html.haml within layouts/application (20.3ms)
+Completed 200 OK in 54ms (Views: 38.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:19 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (30.5ms)
+Completed 200 OK in 85ms (Views: 50.5ms | ActiveRecord: 3.9ms)
+
+
+Started DELETE "/upvote/16" for ::1 at 2021-03-02 16:19:46 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"JT9Of9TVeuWyAMCsOJy/PeZYgyeQwCNJqm+V3KOgP7ogwWIBRMNQk0YHa6Ym9hVrpsbPpCIKMHMnF1w+RzK4fQ==", "chirp_id"=>"16"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (3.1ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:46 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.4ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (35.5ms)
+Completed 200 OK in 75ms (Views: 56.8ms | ActiveRecord: 3.4ms)
+
+
+Started DELETE "/upvote/14" for ::1 at 2021-03-02 16:19:47 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"ZPseoeLNbkxUBuwcdCSp70Ab6+DyKs5l6HwkZ2J8PflhBTLfcttEOqABRxZqTgO5AIWnY0Dg3V9lBO2Fhu66Pg==", "chirp_id"=>"14"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.7ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:47 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (33.0ms)
+Completed 200 OK in 66ms (Views: 48.7ms | ActiveRecord: 2.4ms)
+
+
+Started DELETE "/upvote/18" for ::1 at 2021-03-02 16:19:47 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"PTq4PLal01g9P+8iBOHuXNkaOrmLJxD94s2S89HQxLg4xJRCJrP5Lsk4RCgai0QKmYR2OjntA8dvtVsRNUJDfw==", "chirp_id"=>"18"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.4ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:47 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (26.3ms)
+Completed 200 OK in 56ms (Views: 41.9ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/upvote/15" for ::1 at 2021-03-02 16:19:48 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"Aykou1NodRyB89D9LmqFyq9e95Dr8dXiPfR//Te8n+cG1wTFw35fanX0e/cwAC+c78C7E1k7xtiwjLYf0y4YIA==", "chirp_id"=>"15"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.6ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:48 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (28.6ms)
+Completed 200 OK in 80ms (Views: 60.8ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/upvote/20" for ::1 at 2021-03-02 16:19:48 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"xPuQqC2V8zo5pS2Mkio3a9/l9Skh3uDUYzX4bXNh9knBBbzWvYPZTM2ihoaMQJ09n3u5qpMU8+7uTTGPl/Nxjg==", "chirp_id"=>"20"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.6ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:48 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (20.4ms)
+Completed 200 OK in 56ms (Views: 33.9ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/upvote/19" for ::1 at 2021-03-02 16:19:49 -0800
+Processing by UpvotesController#remove_upvote as HTML
+  Parameters: {"authenticity_token"=>"2+PRsywjWys5324KEmL7RDY7AUHamNASfiqUhODWEKzeHf3NvDVxXc3YxQAMCFESdqVNwmhSwyjzUl1mBESXaw==", "chirp_id"=>"19"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:10
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:11
+  [1m[36mUpvote Destroy (6.8ms)[0m  [1m[31mDELETE FROM "upvotes" WHERE "upvotes"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/upvotes_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:49 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (23.6ms)
+Completed 200 OK in 47ms (Views: 36.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:19:50 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.3ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (22.3ms)
+Completed 200 OK in 52ms (Views: 36.8ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/upvote/19" for ::1 at 2021-03-02 16:20:26 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"NkCBsicZWRE6RNo1Qzc2DUPqgVeOOQs+forEApF9uYkzvq3Mtw9zZ85DcT9dXZxbA3TN1DzzGATz8g3gde8+Tg==", "chirp_id"=>"19"}
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.4ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 19], ["ip", "::1"], ["created_at", "2021-03-03 00:20:26.158430"], ["updated_at", "2021-03-03 00:20:26.158430"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 17], ["chirp_id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:20:26 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (19.4ms)
+Completed 200 OK in 46ms (Views: 32.7ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/upvote/20" for ::1 at 2021-03-02 16:20:30 -0800
+Processing by UpvotesController#upvote_chirp as HTML
+  Parameters: {"authenticity_token"=>"xpxR17mAi8SQlasuw8CLGr5I2REdhZ6WRWoCvwIMrNjDYn2pKZahsmSSACTdqiFM/taVkq9PjazIEstd5p4rHw==", "chirp_id"=>"20"}
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:3
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["chirp_id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[36mUpvote Create (0.3ms)[0m  [1m[32mINSERT INTO "upvotes" ("chirp_id", "ip", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["chirp_id", 20], ["ip", "::1"], ["created_at", "2021-03-03 00:20:30.101720"], ["updated_at", "2021-03-03 00:20:30.101720"]]
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[36mUpvote Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "upvotes" WHERE "upvotes"."ip" = ? AND "upvotes"."id" != ? AND "upvotes"."chirp_id" = ? LIMIT ?[0m  [["ip", "::1"], ["id", 18], ["chirp_id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/upvotes_controller.rb:5
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-02 16:20:30 -0800
+Processing by ChirpsController#index as HTML
+  [1m[36mChirp Load (0.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/controllers/chirps_controller.rb:5
+  [1m[36mChirp Load (0.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 16]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 17]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 18]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  Rendering chirps/index.html.haml within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 19], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 19]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 20], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 20]]
+  ↳ app/models/chirp.rb:7
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 15], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 15]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 18], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 14], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "upvotes" WHERE "upvotes"."chirp_id" = ?[0m  [["chirp_id", 14]]
+  ↳ app/models/chirp.rb:7
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 17], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT  "upvotes".* FROM "upvotes" WHERE "upvotes"."chirp_id" = ? AND "upvotes"."ip" = ? LIMIT ?[0m  [["chirp_id", 16], ["ip", "::1"], ["LIMIT", 1]]
+  ↳ app/models/chirp.rb:11
+  [1m[36mCACHE Chirp Load (0.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" ORDER BY "chirps"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/chirp.rb:15
+  Rendered chirps/index.html.haml within layouts/application (20.1ms)
+Completed 200 OK in 51ms (Views: 35.0ms | ActiveRecord: 2.3ms)
+
+

@@ -10,4 +10,10 @@ class Chirp < ApplicationRecord
   def already_upvoted?(ip)
     Upvote.find_by(chirp: self, ip: ip).present?
   end
+
+  def score
+    ranking = Chirp.last.id - id
+
+    ranking / (upvote_count + 1)
+  end
 end

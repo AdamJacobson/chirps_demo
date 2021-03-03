@@ -2,7 +2,7 @@ require 'HTTParty'
 
 class ChirpsController < ApplicationController
   def index
-    @chirps = Chirp.all.reverse
+    @chirps = Chirp.all.sort_by { |chirp| chirp.score }
   end
 
   def new

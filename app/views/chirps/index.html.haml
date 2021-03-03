@@ -6,6 +6,7 @@
     %th Message
     %th Upvotes
     %th Actions
+    %th Score
   - @chirps.each do |chirp|
     %tr
       %td= chirp.id
@@ -16,5 +17,6 @@
           = button_to 'Remove Upvote', remove_upvote_path(chirp.id), method: :delete
         - else
           = button_to 'Upvote', upvote_path(chirp.id)
+      %td= chirp.score
 
 = link_to 'New Chirp', new_chirp_path
