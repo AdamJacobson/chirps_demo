@@ -1,0 +1,8 @@
+%h1
+= form_with model: @chirp do |f|
+  = f.label :message
+  = f.text_field :message
+
+  = f.submit 'Create New Chrip'
+
+= link_to 'See All Chirps', chirps_path
