@@ -11,12 +11,43 @@
     %tr
       %td= chirp.id
       %td.message= chirp.message
-      %td.upvotes= chirp.upvote_count
+      %td.upvotes{id: "upvotes_#{chirp.id}"}= chirp.upvote_count
       %td.actions
-        - if chirp.already_upvoted?(request.remote_ip)
-          = button_to 'Remove Upvote', remove_upvote_path(chirp.id), method: :delete
-        - else
-          = button_to 'Upvote', upvote_path(chirp.id)
-      %td= chirp.score
+        %button{id: "button_upvote_#{chirp.id}", onclick: "upvote(#{chirp.id})", hidden: chirp.already_upvoted?(request.remote_ip)}= 'Upvote'
+        %button{id: "button_remove_upvote_#{chirp.id}", onclick: "remove_upvote(#{chirp.id})", hidden: !chirp.already_upvoted?(request.remote_ip)}= 'Remove Upvote'
+      %td{id: "score_#{chirp.id}"}= chirp.score
 
 = link_to 'New Chirp', new_chirp_path
+
+:javascript
+  function upvote(chirp_id) {
+    $.ajax({
+      url: '/upvote',
+      method: 'post',
+      data: {
+        chirp_id: chirp_id
+      }
+    }).done(response => {
+      $(`#upvotes_${chirp_id}`).html(response.upvote_count);
+      $(`#score_${chirp_id}`).html(response.score);
+
+      $(`#button_upvote_${chirp_id}`).hide();
+      $(`#button_remove_upvote_${chirp_id}`).show();
+    })
+  }
+
+  function remove_upvote(chirp_id) {
+    $.ajax({
+      url: '/upvote',
+      method: 'delete',
+      data: {
+        chirp_id: chirp_id
+      }
+    }).done(response => {
+      $(`#upvotes_${chirp_id}`).html(response.upvote_count);
+      $(`#score_${chirp_id}`).html(response.score);
+
+      $(`#button_upvote_${chirp_id}`).show();
+      $(`#button_remove_upvote_${chirp_id}`).hide();
+    })
+  }

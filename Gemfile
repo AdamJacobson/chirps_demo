@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'haml'
 
+gem 'jquery-rails'
+
 gem 'httparty'
 
 # Use CoffeeScript for .coffee assets and views

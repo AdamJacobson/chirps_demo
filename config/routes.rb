@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :chirps, only: [:create, :new, :index]
 
-  post '/upvote/:chirp_id', controller: 'upvotes', action: 'upvote_chirp', as: 'upvote'
-  delete '/upvote/:chirp_id', controller: 'upvotes', action: 'remove_upvote', as: 'remove_upvote'
+  post '/upvote', controller: 'upvotes', action: 'upvote_chirp', as: 'upvote'
+  delete '/upvote', controller: 'upvotes', action: 'remove_upvote', as: 'remove_upvote'
 end
